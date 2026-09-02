@@ -56,3 +56,32 @@ Java works through a two-stage process of compilation and interpretation, design
 -	Just-In-Time (JIT) Compiler: Identifies "hot spots" (frequently executed code) and compiles them directly into native machine code to significantly boost performance.
 
 ```
+
+## 2. Setup
+Setting up your environment is the first step to becoming a Java developer. Follow these steps to get your machine ready for coding in 2026.
+
+### 2.1 JDK Setup
+```text
+The Java Development Kit (JDK) is the core toolkit needed to compile and run Java programs.
+•	Download: Visit the Oracle Java Downloads page. As of early 2026, JDK 25 is the latest Long-Term Support (LTS) version, while JDK 26 is the most recent feature release.
+•	Installation:
+-	Windows: Download the .exe or .msi installer and follow the prompts.
+-	macOS: Download the .dmg installer (choose ARM64 for M-series chips or x64 for Intel).
+•	Verify: Open your terminal (Command Prompt or Terminal) and type java -version to confirm it is correctly installed.
+
+```
+
+### 2.2 The Software Developement Kit Manager
+```text
+SDKMAN! (The Software Development Kit Manager) is a command-line tool used to install, manage, and switch between parallel versions of multiple Software Development Kits (SDKs). It is most popular within the Java ecosystem for managing multiple Java Development Kits (JDKs), build tools like Maven and Gradle, and JVM-based languages like Groovy, Scala, and Kotlin.
+```
+
+To install SDKMAN! on any Unix-based system, open your terminal and run the following
+```bash
+curl -s "https://get.sdkman.io"
+```
+
+After the installation script finishes, open a new terminal window or run
+```bash
+source "$HOME/.sdkman/bin/sdkman-init.sh
+```

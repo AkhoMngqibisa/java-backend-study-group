@@ -2,7 +2,7 @@
 
 ## 1.1 What is Java?
 ```text
-Java is a high level, object oriented programming language that runs on the Java Virtual Machine (JVM). It is designed to be portable which means Write once, run any where.
+Java is a high level, object oriented programming language that runs on the Java Virtual Machine (JVM). It is designed to be portable which means Write once, run any where..
 ```
 
 ## 1.2 Why would you use Java?

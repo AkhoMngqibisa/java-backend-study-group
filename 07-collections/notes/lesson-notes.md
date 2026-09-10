@@ -175,3 +175,55 @@ boolean exists = names.contains("Sarah");
 ```
 
 ---
+## Complete Example
+
+```java
+import java.util.ArrayList;
+
+public class ArrayListExample {
+
+    public static void main(String[] args) {
+
+        ArrayList<String> students = new ArrayList<>();
+
+        students.add("Akhona");
+        students.add("John");
+        students.add("Sarah");
+        students.add("John");
+
+        System.out.println(students);
+
+        System.out.println(students.get(1));
+
+        students.set(1, "Thabo");
+
+        students.remove("Sarah");
+
+        System.out.println(students);
+    }
+}
+```
+
+---
+
+## When Should We Use ArrayList?
+
+Use an `ArrayList` when:
+
+- You frequently access elements using indexes.
+- You need to maintain insertion order.
+- Duplicate values are allowed.
+- You frequently read elements.
+- Insertions/removals mostly happen at the end of the list.
+
+### Example Use Cases
+
+```text
+Students in a class
+Products in a shopping cart
+List of employees
+List of transactions
+List of API results
+```
+
+---

@@ -364,3 +364,55 @@ names.removeLast();
 ```
 
 ---
+
+## Complete Example
+
+```java
+import java.util.LinkedList;
+
+public class LinkedListExample {
+
+    public static void main(String[] args) {
+
+        LinkedList<String> queue = new LinkedList<>();
+
+        queue.add("John");
+        queue.add("Sarah");
+        queue.add("Akhona");
+
+        System.out.println(queue);
+
+        queue.addFirst("Thabo");
+
+        queue.addLast("Peter");
+
+        System.out.println(queue);
+
+        queue.removeFirst();
+
+        queue.removeLast();
+
+        System.out.println(queue);
+    }
+}
+```
+
+---
+
+## When Should We Use LinkedList?
+
+A `LinkedList` can be useful when:
+
+- You frequently add/remove elements from the beginning or end.
+- You need queue/deque operations.
+- You don't require frequent random access by index.
+
+### Example Use Cases
+
+```text
+Queue
+Deque
+Browser history-like structures
+Music playlist manipulation
+Task processing
+```

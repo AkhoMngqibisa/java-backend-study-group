@@ -588,3 +588,16 @@ Use `HashSet` when:
 - Ordering is not important.
 - You frequently need to check whether something exists.
 - You want to remove duplicates
+
+### Example Use Cases
+
+```text
+Unique usernames
+Unique email addresses
+Unique product IDs
+Unique tags
+Unique permissions
+Removing duplicate values from a list
+```
+
+---

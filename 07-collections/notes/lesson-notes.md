@@ -416,3 +416,175 @@ Browser history-like structures
 Music playlist manipulation
 Task processing
 ```
+---
+
+# 3. HashSet
+
+## What is a HashSet?
+
+`HashSet` is a collection that stores **unique elements**.
+
+It does not allow duplicate values.
+
+```java
+HashSet<String> names = new HashSet<>();
+
+names.add("Akhona");
+names.add("John");
+names.add("Akhona");
+
+System.out.println(names);
+```
+
+The second `"Akhona"` is ignored.
+
+Possible output:
+
+```text
+[Akhona, John]
+```
+
+The order is not guaranteed.
+
+---
+
+## Technical Explanation
+
+`HashSet` is backed by a hash table.
+
+When an element is added, Java uses the object's:
+
+```java
+hashCode()
+```
+
+to determine where the element should be stored.
+
+When Java needs to check whether an element exists, it uses the hash information and:
+
+```java
+equals()
+```
+
+to determine whether the object is already present.
+
+Conceptually:
+
+```text
+                Hash Function
+                     ↓
+"Akhona" ───────────────→ Bucket
+                             ↓
+                         [Akhona]
+```
+
+This is why `HashSet` is generally very efficient for:
+
+```java
+add()
+remove()
+contains()
+```
+
+---
+
+## Non-Technical Example
+
+Imagine a guest list where each person can only appear once.
+
+```text
+Guest List
+
+Akhona
+John
+Sarah
+```
+
+If someone tries to add:
+
+```text
+Akhona
+```
+
+again, you don't create another entry.
+
+The list remains:
+
+```text
+Akhona
+John
+Sarah
+```
+
+This is the main idea behind a `Set`.
+
+---
+
+## Key Characteristics
+
+- Does not allow duplicates
+- Does not guarantee insertion order
+- Allows one `null` element
+- Uses hashing internally
+- Fast lookup in typical cases
+- Implements the `Set` interface
+
+---
+
+## Example
+
+```java
+import java.util.HashSet;
+
+public class HashSetExample {
+
+    public static void main(String[] args) {
+
+        HashSet<String> names = new HashSet<>();
+
+        names.add("Akhona");
+        names.add("John");
+        names.add("Sarah");
+        names.add("Akhona");
+
+        System.out.println(names);
+    }
+}
+```
+
+The duplicate `"Akhona"` is not added.
+
+---
+
+## Checking for an Element
+
+```java
+boolean exists = names.contains("Akhona");
+
+System.out.println(exists);
+```
+
+Output:
+
+```text
+true
+```
+
+---
+
+## Removing an Element
+
+```java
+names.remove("John");
+```
+
+---
+
+## When Should We Use HashSet?
+
+Use `HashSet` when:
+
+- You need unique values.
+- Ordering is not important.
+- You frequently need to check whether something exists.
+- You want to remove duplicates

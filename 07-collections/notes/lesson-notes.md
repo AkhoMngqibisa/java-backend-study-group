@@ -227,3 +227,140 @@ List of API results
 ```
 
 ---
+
+# 2. LinkedList
+
+## What is a LinkedList?
+
+`LinkedList` is a Java collection that stores elements as nodes connected to each other.
+
+Each node contains:
+
+1. The data
+2. A reference to the next node
+3. A reference to the previous node
+
+Java's `LinkedList` implements both:
+
+```text
+List
+Deque
+```
+
+---
+
+## Technical Explanation
+
+A `LinkedList` uses a doubly linked list.
+
+Conceptually:
+
+```text
+NULL
+  ↑
+┌─────────┐
+│   A     │
+└─────────┘
+     ↓
+┌─────────┐
+│   B     │
+└─────────┘
+     ↓
+┌─────────┐
+│   C     │
+└─────────┘
+     ↓
+   NULL
+```
+
+More accurately:
+
+```text
+NULL ← [A] ⇄ [B] ⇄ [C] → NULL
+```
+
+Each node knows about the node before and after it.
+
+---
+
+## Non-Technical Example
+
+Imagine a train.
+
+```text
+🚂 ← 🚃 ← 🚃 ← 🚃
+```
+
+Each train carriage is connected to another carriage.
+
+If you remove one carriage:
+
+```text
+Before:
+
+[A] ⇄ [B] ⇄ [C]
+
+Remove B:
+
+[A] ⇄ [C]
+```
+
+The connections can be changed without moving all the other elements.
+
+---
+
+## Key Characteristics
+
+- Maintains insertion order
+- Allows duplicates
+- Allows `null`
+- Implements `List`
+- Implements `Deque`
+- Efficient insertion/removal at the beginning and end
+- Slower random/index-based access compared with `ArrayList`
+
+---
+
+## Adding Elements
+
+```java
+LinkedList<String> names = new LinkedList<>();
+
+names.add("Akhona");
+names.add("John");
+names.add("Sarah");
+```
+
+---
+
+## Adding at the Beginning
+
+```java
+names.addFirst("Thabo");
+```
+
+---
+
+## Adding at the End
+
+```java
+names.addLast("Peter");
+```
+
+---
+
+## Removing from the Beginning
+
+```java
+names.removeFirst();
+```
+
+---
+
+## Removing from the End
+
+```java
+names.removeLast();
+```
+
+---

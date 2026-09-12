@@ -751,3 +751,47 @@ Removing duplicates while keeping the original order
 ```
 
 ---
+
+# 5. ArrayList vs LinkedList
+
+| Feature                 | ArrayList     | LinkedList         |
+| ----------------------- | ------------- | ------------------ |
+| Data structure          | Dynamic array | Doubly linked list |
+| Maintains order         | Yes           | Yes                |
+| Allows duplicates       | Yes           | Yes                |
+| Allows null             | Yes           | Yes                |
+| Index access            | Fast          | Slower             |
+| Add at end              | Fast          | Fast               |
+| Add/remove at beginning | Slower        | Fast               |
+| Random access           | Good          | Poor               |
+| Implements List         | Yes           | Yes                |
+| Implements Deque        | No            | Yes                |
+
+---
+
+## Example Scenario
+
+Suppose we have:
+
+```java
+List<String> students;
+```
+
+If we frequently do:
+
+```java
+students.get(500);
+```
+
+`ArrayList` is generally more suitable because it provides efficient index-based access.
+
+If we frequently do:
+
+```java
+students.addFirst("Akhona");
+students.removeFirst();
+```
+
+`LinkedList` may be more appropriate.
+
+---

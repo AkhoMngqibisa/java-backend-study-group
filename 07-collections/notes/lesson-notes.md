@@ -601,3 +601,101 @@ Removing duplicate values from a list
 ```
 
 ---
+
+# 4. LinkedHashSet
+
+## What is a LinkedHashSet?
+
+`LinkedHashSet` is similar to `HashSet`, but it additionally maintains the **insertion order** of elements.
+
+It combines characteristics of:
+
+```text
+HashSet + Linked List ordering
+```
+
+Example:
+
+```java
+LinkedHashSet<String> names = new LinkedHashSet<>();
+
+names.add("Akhona");
+names.add("John");
+names.add("Sarah");
+
+System.out.println(names);
+```
+
+Output:
+
+```text
+[Akhona, John, Sarah]
+```
+
+The elements appear in the order they were inserted.
+
+---
+
+## Technical Explanation
+
+`LinkedHashSet` uses hashing to provide efficient set operations while maintaining a linked structure between entries to preserve insertion order.
+
+Conceptually:
+
+```text
+Hashing
+
+Akhona → Bucket 1
+John   → Bucket 4
+Sarah  → Bucket 2
+
+Insertion order:
+
+Akhona → John → Sarah
+```
+
+The hash structure helps with lookup while the linked structure remembers insertion order.
+
+---
+
+## Non-Technical Example
+
+Imagine a guest list where:
+
+1. Every guest can only appear once.
+2. We want to remember the order in which guests arrived.
+
+```text
+First:
+
+Akhona
+
+Second:
+
+John
+
+Third:
+
+Sarah
+```
+
+The collection remembers:
+
+```text
+Akhona → John → Sarah
+```
+
+If John tries to register again, he isn't added twice.
+
+---
+
+## Key Characteristics
+
+- Does not allow duplicates
+- Maintains insertion order
+- Allows one `null` element
+- Uses hashing
+- Generally provides efficient `add`, `remove`, and `contains`
+- Implements the `Set` interface
+
+---

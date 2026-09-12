@@ -795,3 +795,51 @@ students.removeFirst();
 `LinkedList` may be more appropriate.
 
 ---
+
+# 6. HashSet vs LinkedHashSet
+
+| Feature                     | HashSet | LinkedHashSet |
+| --------------------------- | ------- | ------------- |
+| Allows duplicates           | No      | No            |
+| Maintains insertion order   | No      | Yes           |
+| Allows null                 | Yes     | Yes           |
+| Hash-based                  | Yes     | Yes           |
+| Fast lookup                 | Yes     | Yes           |
+| Memory overhead             | Lower   | Higher        |
+| Predictable iteration order | No      | Yes           |
+
+---
+
+## Example
+
+### HashSet
+
+```java
+HashSet<String> names = new HashSet<>();
+
+names.add("Akhona");
+names.add("John");
+names.add("Sarah");
+```
+
+The iteration order is not guaranteed.
+
+### LinkedHashSet
+
+```java
+LinkedHashSet<String> names = new LinkedHashSet<>();
+
+names.add("Akhona");
+names.add("John");
+names.add("Sarah");
+```
+
+Iteration follows:
+
+```text
+Akhona
+John
+Sarah
+```
+
+---

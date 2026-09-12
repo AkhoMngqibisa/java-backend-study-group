@@ -699,3 +699,55 @@ If John tries to register again, he isn't added twice.
 - Implements the `Set` interface
 
 ---
+
+## Example
+
+```java
+import java.util.LinkedHashSet;
+
+public class LinkedHashSetExample {
+
+    public static void main(String[] args) {
+
+        LinkedHashSet<String> names = new LinkedHashSet<>();
+
+        names.add("Akhona");
+        names.add("John");
+        names.add("Sarah");
+        names.add("John");
+
+        System.out.println(names);
+    }
+}
+```
+
+Output:
+
+```text
+[Akhona, John, Sarah]
+```
+
+John only appears once, and the insertion order is maintained.
+
+---
+
+## When Should We Use LinkedHashSet?
+
+Use `LinkedHashSet` when:
+
+- You need unique elements.
+- You need to preserve insertion order.
+- You want predictable iteration order.
+- You still want hash-based set operations.
+
+### Example Use Cases
+
+```text
+Unique search history
+Unique recently viewed products
+Unique tags while preserving their order
+Unique events in the order they occurred
+Removing duplicates while keeping the original order
+```
+
+---

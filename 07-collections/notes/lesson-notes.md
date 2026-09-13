@@ -843,3 +843,54 @@ Sarah
 ```
 
 ---
+# 7. Quick Decision Guide
+
+## Choose ArrayList when:
+
+```text
+I need a List
+        ↓
+I need index-based access
+        ↓
+I frequently read elements
+        ↓
+Duplicates are allowed
+```
+
+---
+
+## Choose LinkedList when:
+
+```text
+I need a List/Deque
+        ↓
+I frequently add/remove at the beginning or end
+        ↓
+Index-based access is not important
+```
+
+---
+
+## Choose HashSet when:
+
+```text
+I need unique values
+        ↓
+Order does NOT matter
+        ↓
+I want efficient lookup
+```
+
+---
+
+## Choose LinkedHashSet when:
+
+```text
+I need unique values
+        ↓
+AND
+        ↓
+I need insertion order preserved
+```
+
+---

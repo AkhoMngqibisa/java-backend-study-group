@@ -894,3 +894,91 @@ I need insertion order preserved
 ```
 
 ---
+
+# 8. Real-World Example
+
+Imagine we are building an online shopping application.
+
+### ArrayList
+
+We can use an `ArrayList` for products displayed to a customer.
+
+```java
+ArrayList<String> products = new ArrayList<>();
+
+products.add("Laptop");
+products.add("Mouse");
+products.add("Keyboard");
+```
+
+We can access a product using its index:
+
+```java
+products.get(0);
+```
+
+---
+
+### LinkedList
+
+We could use a `LinkedList` for a queue of tasks waiting to be processed.
+
+```java
+LinkedList<String> tasks = new LinkedList<>();
+
+tasks.add("Process Order #1001");
+tasks.add("Process Order #1002");
+tasks.add("Process Order #1003");
+
+tasks.removeFirst();
+```
+
+The first task is processed and removed.
+
+---
+
+### HashSet
+
+We could use a `HashSet` to store unique product IDs.
+
+```java
+HashSet<Integer> productIds = new HashSet<>();
+
+productIds.add(1001);
+productIds.add(1002);
+productIds.add(1001);
+```
+
+Result:
+
+```text
+[1001, 1002]
+```
+
+Duplicate product IDs are not stored.
+
+---
+
+### LinkedHashSet
+
+We could use a `LinkedHashSet` for a customer's unique search history while preserving the order in which searches were added.
+
+```java
+LinkedHashSet<String> searchHistory = new LinkedHashSet<>();
+
+searchHistory.add("Java");
+searchHistory.add("Spring Boot");
+searchHistory.add("Angular");
+```
+
+Result:
+
+```text
+Java
+Spring Boot
+Angular
+```
+
+Duplicates are prevented while insertion order is preserved.
+
+---

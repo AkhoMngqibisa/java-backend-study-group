@@ -1038,3 +1038,23 @@ Unique + Insertion Order
 ```
 
 ---
+
+# 11. Final Comparison
+
+```text
+                    COLLECTIONS
+                         |
+          ┌──────────────┴──────────────┐
+          |                             |
+         LIST                          SET
+          |                             |
+    ┌─────┴─────┐                ┌──────┴──────┐
+    |           |                |             |
+ArrayList   LinkedList        HashSet    LinkedHashSet
+    |           |                |             |
+ Fast       Fast insert/       Unique        Unique
+ index      remove ends        values        values
+ access                                     + order
+```
+
+---

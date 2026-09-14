@@ -982,3 +982,24 @@ Angular
 Duplicates are prevented while insertion order is preserved.
 
 ---
+
+# 9. Big-O Performance Overview
+
+| Operation    | ArrayList | LinkedList | HashSet | LinkedHashSet |
+| ------------ | --------: | ---------: | ------: | ------------: |
+| `add()`      |    O(1)\* |   O(1)\*\* |  O(1)\* |        O(1)\* |
+| `get(index)` |      O(1) |       O(n) |     N/A |           N/A |
+| `contains()` |      O(n) |       O(n) |  O(1)\* |        O(1)\* |
+| `remove()`   |      O(n) | O(n)\*\*\* |  O(1)\* |        O(1)\* |
+
+### Notes
+
+`*` Average/amortized case.
+
+`**` When adding at the end or when the node position is already known.
+
+`***` Finding an element by value can still require traversal.
+
+Hash-based collections can degrade in pathological collision scenarios, so `O(1)` should be understood as the typical/expected performance rather than an absolute guarantee.
+
+---

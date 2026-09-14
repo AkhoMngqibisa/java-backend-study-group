@@ -1003,3 +1003,38 @@ Duplicates are prevented while insertion order is preserved.
 Hash-based collections can degrade in pathological collision scenarios, so `O(1)` should be understood as the typical/expected performance rather than an absolute guarantee.
 
 ---
+# 10. Key Concepts to Remember
+
+### ArrayList
+
+> **"I need an ordered collection and fast index access."**
+
+```text
+Array → Resizable
+```
+
+### LinkedList
+
+> **"I need a collection where adding/removing from the ends is important."**
+
+```text
+Node ⇄ Node ⇄ Node
+```
+
+### HashSet
+
+> **"I need unique values and I don't care about order."**
+
+```text
+Unique + Fast Lookup
+```
+
+### LinkedHashSet
+
+> **"I need unique values AND I want to preserve insertion order."**
+
+```text
+Unique + Insertion Order
+```
+
+---

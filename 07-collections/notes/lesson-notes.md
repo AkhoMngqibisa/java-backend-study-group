@@ -1058,3 +1058,80 @@ ArrayList   LinkedList        HashSet    LinkedHashSet
 ```
 
 ---
+
+# 12. Questions for the Group
+
+## Question 1
+
+If I need to store duplicate values and access elements using an index, which collection would I choose?
+
+**Answer:**
+
+`ArrayList`
+
+---
+
+## Question 2
+
+If I need unique values and don't care about their order, which collection would I choose?
+
+**Answer:**
+
+`HashSet`
+
+---
+
+## Question 3
+
+If I need unique values but must preserve insertion order, which collection would I choose?
+
+**Answer:**
+
+`LinkedHashSet`
+
+---
+
+## Question 4
+
+Which collection is designed around nodes connected to each other?
+
+**Answer:**
+
+`LinkedList`
+
+---
+
+## Question 5
+
+Why would `ArrayList` generally be preferred over `LinkedList` for frequent `get(index)` operations?
+
+**Answer:**
+
+Because `ArrayList` provides direct index-based access, while `LinkedList` generally has to traverse nodes to reach the requested index.
+
+---
+
+# Summary
+
+| Collection      | Ordered               | Duplicates | Main Strength                   |
+| --------------- | --------------------- | ---------- | ------------------------------- |
+| `ArrayList`     | Yes                   | Yes        | Fast index access               |
+| `LinkedList`    | Yes                   | Yes        | Insert/remove at ends           |
+| `HashSet`       | No guaranteed order   | No         | Unique values + fast lookup     |
+| `LinkedHashSet` | Yes — insertion order | No         | Unique values + preserved order |
+
+## The Main Rule
+
+```text
+Need a List?
+    |
+    ├── Need fast index access → ArrayList
+    |
+    └── Need frequent insertion/removal at ends → LinkedList
+
+Need a Set?
+    |
+    ├── Order doesn't matter → HashSet
+    |
+    └── Need insertion order → LinkedHashSet
+```

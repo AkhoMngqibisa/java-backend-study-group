@@ -57,3 +57,20 @@ The program continues.
 ```
 
 **Important:** Catch the most specific exception you can reasonably handle. Avoid catching `Exception` everywhere and silently ignoring the problem.
+
+## 4. Exception hierarchy
+
+Simplified hierarchy:
+
+```text
+Object
+  └── Throwable
+       ├── Error
+       └── Exception
+            ├── RuntimeException
+            └── Other checked exceptions
+```
+
+- **`Error`**: serious JVM or environment problems; applications usually do not try to recover from these.
+- **Checked exceptions**: the compiler requires code to catch them or declare them with `throws` (for example, `IOException`).
+- **Unchecked exceptions**: subclasses of `RuntimeException`; the compiler does not require them to be caught or declared (for example, `NullPointerException`, `IllegalArgumentException`).

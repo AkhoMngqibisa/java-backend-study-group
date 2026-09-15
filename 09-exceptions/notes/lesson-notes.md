@@ -74,3 +74,24 @@ Object
 - **`Error`**: serious JVM or environment problems; applications usually do not try to recover from these.
 - **Checked exceptions**: the compiler requires code to catch them or declare them with `throws` (for example, `IOException`).
 - **Unchecked exceptions**: subclasses of `RuntimeException`; the compiler does not require them to be caught or declared (for example, `NullPointerException`, `IllegalArgumentException`).
+
+## 5. Checked exception example
+
+```java
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+
+public class ReadFileExample {
+    public static void main(String[] args) {
+        try {
+            String content = Files.readString(Path.of("notes.txt"));
+            System.out.println(content);
+        } catch (IOException exception) {
+            System.out.println("Could not read the file: " + exception.getMessage());
+        }
+    }
+}
+```
+
+`Files.readString` can throw an `IOException`, so this example handles it.

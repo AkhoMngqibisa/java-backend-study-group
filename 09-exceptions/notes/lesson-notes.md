@@ -24,3 +24,36 @@ public class ExceptionExample {
 ```
 
 This program throws an `ArithmeticException`. Without handling it, the current execution path stops and Java prints an error stack trace.
+
+## 3. `try`, `catch`, and `finally`
+
+- `try`: contains code that might throw an exception.
+- `catch`: handles a matching exception.
+- `finally`: runs when control leaves the `try`/`catch` in ordinary circumstances; commonly used for cleanup. It may not run if the JVM terminates abruptly.
+
+```java
+public class TryCatchExample {
+    public static void main(String[] args) {
+        try {
+            int result = 10 / 0;
+            System.out.println(result);
+        } catch (ArithmeticException exception) {
+            System.out.println("You cannot divide by zero.");
+        } finally {
+            System.out.println("Finished attempting the calculation.");
+        }
+
+        System.out.println("The program continues.");
+    }
+}
+```
+
+Expected output:
+
+```text
+You cannot divide by zero.
+Finished attempting the calculation.
+The program continues.
+```
+
+**Important:** Catch the most specific exception you can reasonably handle. Avoid catching `Exception` everywhere and silently ignoring the problem.

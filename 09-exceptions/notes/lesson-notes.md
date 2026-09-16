@@ -128,3 +128,35 @@ static String readNotes() throws IOException {
 ```
 
 The method declares the possibility; its caller must handle or further declare the checked exception.
+
+## 7. Custom exceptions
+
+Create a custom exception when a domain-specific error deserves a meaningful name.
+
+```java
+class InsufficientFundsException extends Exception {
+    public InsufficientFundsException(String message) {
+        super(message);
+    }
+}
+
+class BankAccount {
+    private double balance;
+
+    BankAccount(double balance) {
+        this.balance = balance;
+    }
+
+    public void withdraw(double amount) throws InsufficientFundsException {
+        if (amount <= 0) {
+            throw new IllegalArgumentException("Amount must be positive.");
+        }
+        if (amount > balance) {
+            throw new InsufficientFundsException("Not enough money in the account.");
+        }
+        balance -= amount;
+    }
+}
+```
+
+This custom exception is **checked** because it extends `Exception` but not `RuntimeException`.

@@ -160,3 +160,29 @@ class BankAccount {
 ```
 
 This custom exception is **checked** because it extends `Exception` but not `RuntimeException`.
+
+## 8. Best practices
+
+- Handle an exception where you can take a useful action.
+- Give error messages enough context to diagnose the problem.
+- Do not use exceptions as ordinary control flow.
+- Do not swallow exceptions with an empty `catch` block.
+- Avoid catching overly broad exception types without a clear reason.
+- Use `try-with-resources` for resources such as files and streams that must be closed.
+
+Example:
+
+```java
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+
+try (BufferedReader reader = Files.newBufferedReader(Path.of("notes.txt"))) {
+    System.out.println(reader.readLine());
+} catch (IOException exception) {
+    System.out.println("File operation failed: " + exception.getMessage());
+}
+```
+
+---

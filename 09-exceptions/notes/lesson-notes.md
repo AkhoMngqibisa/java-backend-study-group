@@ -95,3 +95,36 @@ public class ReadFileExample {
 ```
 
 `Files.readString` can throw an `IOException`, so this example handles it.
+
+## 6. `throw` vs `throws`
+
+- `throw` actually throws an exception.
+- `throws` declares that a method may pass an exception to its caller.
+
+```java
+public class AgeValidator {
+    static void validateAge(int age) {
+        if (age < 18) {
+            throw new IllegalArgumentException("Age must be at least 18.");
+        }
+    }
+
+    public static void main(String[] args) {
+        validateAge(16); // throws IllegalArgumentException
+    }
+}
+```
+
+Example of `throws`:
+
+```java
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+
+static String readNotes() throws IOException {
+    return Files.readString(Path.of("notes.txt"));
+}
+```
+
+The method declares the possibility; its caller must handle or further declare the checked exception.

@@ -24,3 +24,15 @@ public class Exercise1 {
 ### Exercise 2: Validate an age
 
 Write a method `validateAge(int age)` that throws `IllegalArgumentException` when `age` is less than 18. Test it with `20` and `15`.
+
+### Exercise 3: `throw` or `throws`?
+
+Explain the difference between these lines:
+
+```java
+throw new IllegalArgumentException("Invalid input");
+```
+
+```java
+static void loadFile() throws IOException { ... }
+```

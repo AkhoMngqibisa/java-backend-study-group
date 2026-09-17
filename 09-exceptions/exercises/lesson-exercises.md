@@ -36,3 +36,10 @@ throw new IllegalArgumentException("Invalid input");
 ```java
 static void loadFile() throws IOException { ... }
 ```
+
+### Exercise 4: Checked or unchecked?
+
+Classify each as checked or unchecked:
+- `IOException`
+- `IllegalArgumentException`
+- `NullPointerException`

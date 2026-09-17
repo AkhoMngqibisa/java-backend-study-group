@@ -43,3 +43,8 @@ Classify each as checked or unchecked:
 - `IOException`
 - `IllegalArgumentException`
 - `NullPointerException`
+
+
+### Exercise 5: Custom exception
+
+Create a checked `InsufficientFundsException` and a `withdraw(balance, amount)` method that throws it if `amount > balance`.

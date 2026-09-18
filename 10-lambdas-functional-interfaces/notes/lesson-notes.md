@@ -101,3 +101,15 @@ Multiple statements require braces and usually an explicit `return` when returni
     return total;
 }
 ```
+## 5. Common built-in functional interfaces
+
+These are in `java.util.function`, except `Runnable`, which is in `java.lang`.
+
+| Interface | Main abstract method | Purpose | Example |
+|---|---|---|---|
+| `Predicate<T>` | `boolean test(T value)` | Tests a condition | `n -> n > 10` |
+| `Function<T, R>` | `R apply(T value)` | Converts a value to another value | `s -> s.length()` |
+| `Consumer<T>` | `void accept(T value)` | Uses a value without returning a result | `s -> System.out.println(s)` |
+| `Supplier<T>` | `T get()` | Supplies a value without taking input | `() -> "Hello"` |
+| `Runnable` | `void run()` | Runs a task without parameters or result | `() -> doWork()` |
+| `UnaryOperator<T>` | `T apply(T value)` | Takes and returns the same type | `n -> n * 2` |

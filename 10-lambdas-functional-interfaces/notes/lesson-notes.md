@@ -71,3 +71,33 @@ task.run();
 ```
 
 Both provide an implementation of `Runnable.run()`. The lambda is shorter.
+
+
+## 4. Lambda syntax examples
+
+No parameters:
+
+```java
+() -> System.out.println("Hello")
+```
+
+One parameter (parentheses can be omitted):
+
+```java
+name -> System.out.println(name)
+```
+
+Two parameters:
+
+```java
+(a, b) -> a + b
+```
+
+Multiple statements require braces and usually an explicit `return` when returning a value:
+
+```java
+(a, b) -> {
+    int total = a + b;
+    return total;
+}
+```

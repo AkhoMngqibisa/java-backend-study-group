@@ -47,3 +47,27 @@ Hello, team!
 ```
 
 The lambda supplies the implementation of `sayHello()` without requiring a separate class.
+
+## 3. Before and after lambdas
+
+Traditional anonymous class:
+
+```java
+Runnable task = new Runnable() {
+    @Override
+    public void run() {
+        System.out.println("Task running");
+    }
+};
+
+task.run();
+```
+
+With a lambda:
+
+```java
+Runnable task = () -> System.out.println("Task running");
+task.run();
+```
+
+Both provide an implementation of `Runnable.run()`. The lambda is shorter.

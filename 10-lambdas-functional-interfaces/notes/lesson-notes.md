@@ -162,3 +162,18 @@ public class ConsumerExample {
     }
 }
 ```
+## 9. `Supplier` example
+
+A `Supplier<T>` produces a value without taking an input.
+
+```java
+import java.util.function.Supplier;
+
+public class SupplierExample {
+    public static void main(String[] args) {
+        Supplier<String> greeting = () -> "Welcome to Java";
+
+        System.out.println(greeting.get());
+    }
+}
+```

@@ -131,3 +131,18 @@ public class PredicateExample {
     }
 }
 ```
+## 7. `Function` example
+
+A `Function<T, R>` takes a `T` and returns an `R`.
+
+```java
+import java.util.function.Function;
+
+public class FunctionExample {
+    public static void main(String[] args) {
+        Function<String, Integer> getLength = text -> text.length();
+
+        System.out.println(getLength.apply("Java")); // 4
+    }
+}
+```

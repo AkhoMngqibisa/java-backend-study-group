@@ -146,3 +146,19 @@ public class FunctionExample {
     }
 }
 ```
+## 8. `Consumer` example
+
+A `Consumer<T>` accepts a value and returns no result.
+
+```java
+import java.util.function.Consumer;
+
+public class ConsumerExample {
+    public static void main(String[] args) {
+        Consumer<String> printUppercase =
+                text -> System.out.println(text.toUpperCase());
+
+        printUppercase.accept("akhona"); // AKHONA
+    }
+}
+```

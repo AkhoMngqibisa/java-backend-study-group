@@ -112,4 +112,22 @@ These are in `java.util.function`, except `Runnable`, which is in `java.lang`.
 | `Consumer<T>` | `void accept(T value)` | Uses a value without returning a result | `s -> System.out.println(s)` |
 | `Supplier<T>` | `T get()` | Supplies a value without taking input | `() -> "Hello"` |
 | `Runnable` | `void run()` | Runs a task without parameters or result | `() -> doWork()` |
-| `UnaryOperator<T>` | `T apply(T value)` | Takes and returns the same type | `n -> n * 2` |
+| `UnaryOperator<T>` | `T apply(T value)` | Takes and returns the same type | `n -> n * 2` <br/>|
+
+
+## 6. `Predicate` example
+
+A `Predicate<T>` takes a value and returns `true` or `false`.
+
+```java
+import java.util.function.Predicate;
+
+public class PredicateExample {
+    public static void main(String[] args) {
+        Predicate<Integer> isAdultAge = age -> age >= 18;
+
+        System.out.println(isAdultAge.test(20)); // true
+        System.out.println(isAdultAge.test(16)); // false
+    }
+}
+```

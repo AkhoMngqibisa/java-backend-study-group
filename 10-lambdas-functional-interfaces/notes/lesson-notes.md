@@ -177,3 +177,28 @@ public class SupplierExample {
     }
 }
 ```
+
+## 10. Lambdas with collections
+
+Lambdas are commonly used with collection operations such as `forEach`, `removeIf`, and streams.
+
+```java
+import java.util.ArrayList;
+import java.util.List;
+
+public class LambdaCollectionExample {
+    public static void main(String[] args) {
+        List<String> names = new ArrayList<>(
+                List.of("Akhona", "John", "Amanda", "Thabo")
+        );
+
+        names.forEach(name -> System.out.println(name));
+
+        names.removeIf(name -> name.length() < 5);
+
+        System.out.println(names);
+    }
+}
+```
+
+The first lambda prints each name. The second removes names with fewer than five characters.

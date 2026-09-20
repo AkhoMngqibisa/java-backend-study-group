@@ -248,3 +248,7 @@ Learning Java!
 ### Exercise 2: Use a `Predicate`
 
 Create a `Predicate<Integer>` called `isEven` that returns `true` for even numbers. Test it with `8` and `11`.
+
+### Exercise 3: Use a `Function`
+
+Create a `Function<String, Integer>` that returns the length of a string. Test it with `"Backend"`.

@@ -244,3 +244,7 @@ Create a functional interface called `Printer` with one method `print(String mes
 ```text
 Learning Java!
 ```
+
+### Exercise 2: Use a `Predicate`
+
+Create a `Predicate<Integer>` called `isEven` that returns `true` for even numbers. Test it with `8` and `11`.

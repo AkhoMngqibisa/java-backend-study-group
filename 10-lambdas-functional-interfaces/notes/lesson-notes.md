@@ -202,3 +202,25 @@ public class LambdaCollectionExample {
 ```
 
 The first lambda prints each name. The second removes names with fewer than five characters.
+
+## 11. Streams example: filter and transform
+
+```java
+import java.util.List;
+
+public class StreamExample {
+    public static void main(String[] args) {
+        List<Integer> numbers = List.of(1, 2, 3, 4, 5, 6);
+
+        List<Integer> evenNumbers = numbers.stream()
+                .filter(number -> number % 2 == 0)
+                .toList();
+
+        System.out.println(evenNumbers); // [2, 4, 6]
+    }
+}
+```
+
+- `stream()` starts a stream pipeline.
+- `filter(...)` keeps values that pass the predicate.
+- `toList()` collects the results into a list (Java 16+).

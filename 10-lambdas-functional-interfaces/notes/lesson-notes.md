@@ -224,3 +224,13 @@ public class StreamExample {
 - `stream()` starts a stream pipeline.
 - `filter(...)` keeps values that pass the predicate.
 - `toList()` collects the results into a list (Java 16+).
+## 12. Why use lambdas?
+
+- Less boilerplate than anonymous classes.
+- Make small behaviour-focused pieces of code easier to read.
+- Work naturally with collections and streams.
+- Let behaviour be passed into methods.
+
+**Caution:** A lambda is not automatically better if it makes the code hard to read. Keep complex logic in a named method.
+
+---

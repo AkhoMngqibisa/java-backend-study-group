@@ -234,3 +234,13 @@ public class StreamExample {
 **Caution:** A lambda is not automatically better if it makes the code hard to read. Keep complex logic in a named method.
 
 ---
+
+## Lambdas & Functional Interfaces — Exercises
+
+### Exercise 1: Create a functional interface
+
+Create a functional interface called `Printer` with one method `print(String message)`. Implement it with a lambda that prints:
+
+```text
+Learning Java!
+```

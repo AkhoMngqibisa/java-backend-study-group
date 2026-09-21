@@ -277,3 +277,16 @@ Expected result:
 ```text
 [12, 20]
 ```
+
+### Exercise 7: Combine concepts
+
+Given a list of names, use a lambda to print only names that start with `"A"`.
+
+```java
+List<String> names = List.of("Akhona", "John", "Amanda", "Thabo");
+```
+
+Expected names: `Akhona` and `Amanda`.
+
+<details>
+<summary>Answer key</summary>

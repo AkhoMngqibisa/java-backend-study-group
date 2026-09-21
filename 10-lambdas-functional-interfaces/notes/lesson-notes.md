@@ -252,3 +252,7 @@ Create a `Predicate<Integer>` called `isEven` that returns `true` for even numbe
 ### Exercise 3: Use a `Function`
 
 Create a `Function<String, Integer>` that returns the length of a string. Test it with `"Backend"`.
+
+### Exercise 4: Use a `Consumer`
+
+Create a `Consumer<String>` that prints each name in uppercase. Test it with `"Akhona"`.

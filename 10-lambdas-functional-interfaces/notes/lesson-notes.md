@@ -261,3 +261,19 @@ Create a `Consumer<String>` that prints each name in uppercase. Test it with `"A
 ### Exercise 5: Use a `Supplier`
 
 Create a `Supplier<Double>` that supplies the value `99.99`. Print the supplied value.
+
+### Exercise 6: Filter a list
+
+Given:
+
+```java
+List<Integer> numbers = List.of(3, 8, 12, 5, 20, 7);
+```
+
+Use a stream and a lambda to create a list containing only numbers greater than `10`.
+
+Expected result:
+
+```text
+[12, 20]
+```

@@ -256,3 +256,8 @@ Create a `Function<String, Integer>` that returns the length of a string. Test i
 ### Exercise 4: Use a `Consumer`
 
 Create a `Consumer<String>` that prints each name in uppercase. Test it with `"Akhona"`.
+
+
+### Exercise 5: Use a `Supplier`
+
+Create a `Supplier<Double>` that supplies the value `99.99`. Print the supplied value.

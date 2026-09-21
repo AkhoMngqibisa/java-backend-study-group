@@ -290,3 +290,69 @@ Expected names: `Akhona` and `Amanda`.
 
 <details>
 <summary>Answer key</summary>
+
+**Exercise 1**
+
+```java
+@FunctionalInterface
+interface Printer {
+    void print(String message);
+}
+
+Printer printer = message -> System.out.println(message);
+printer.print("Learning Java!");
+```
+
+**Exercise 2**
+
+```java
+Predicate<Integer> isEven = number -> number % 2 == 0;
+System.out.println(isEven.test(8));  // true
+System.out.println(isEven.test(11)); // false
+```
+
+**Exercise 3**
+
+```java
+Function<String, Integer> length = text -> text.length();
+System.out.println(length.apply("Backend")); // 7
+```
+
+**Exercise 4**
+
+```java
+Consumer<String> uppercase =
+        name -> System.out.println(name.toUpperCase());
+uppercase.accept("Akhona"); // AKHONA
+```
+
+**Exercise 5**
+
+```java
+Supplier<Double> price = () -> 99.99;
+System.out.println(price.get()); // 99.99
+```
+
+**Exercise 6**
+
+```java
+List<Integer> result = numbers.stream()
+        .filter(number -> number > 10)
+        .toList();
+
+System.out.println(result); // [12, 20]
+```
+
+**Exercise 7**
+
+```java
+names.stream()
+        .filter(name -> name.startsWith("A"))
+        .forEach(System.out::println);
+```
+
+`System.out::println` is a method reference, a concise alternative to a lambda that calls that method.
+
+</details>
+
+---

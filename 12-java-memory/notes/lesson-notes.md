@@ -25,3 +25,28 @@ Java bytecode (.class)
 ```
 
 The JVM is a specification; different vendors provide JVM implementations.
+
+## 2. JVM architecture
+
+Three major areas:
+
+1. **Class Loader Subsystem** — loads class definitions.
+2. **Runtime Data Areas** — memory used during execution.
+3. **Execution Engine** — executes bytecode using an interpreter and Just-In-Time (JIT) compilation.
+
+The JVM can also interact with native libraries through the Java Native Interface (JNI).
+
+```text
+                  JVM
+  ┌─────────────────────────────────────┐
+  │          Class Loader               │
+  │ Loading → Linking → Initialization │
+  ├─────────────────────────────────────┤
+  │          Runtime Data Areas          │
+  │ Heap | Java Stacks | Metaspace      │
+  │ PC Registers | Native Method Stacks │
+  ├─────────────────────────────────────┤
+  │          Execution Engine            │
+  │ Interpreter | JIT Compiler | GC     │
+  └─────────────────────────────────────┘
+```

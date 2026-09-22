@@ -50,3 +50,31 @@ The JVM can also interact with native libraries through the Java Native Interfac
   │ Interpreter | JIT Compiler | GC     │
   └─────────────────────────────────────┘
 ```
+
+## 3. Class loading
+
+The class loader subsystem loads class definitions into the JVM.
+
+Main stages:
+1. **Loading** — finds class bytecode and creates its runtime representation.
+2. **Linking** — verifies bytecode, prepares class-level structures, and resolves symbolic references as needed.
+3. **Initialization** — executes static initializers and assigns explicit static field values.
+
+Common built-in class loaders:
+- Bootstrap Class Loader
+- Platform Class Loader
+- Application (System) Class Loader
+
+Java uses delegation: a class loader normally asks its parent to load a class before attempting to load it itself.
+
+```java
+public class ClassLoaderExample {
+    public static void main(String[] args) {
+        Class<?> type = java.util.ArrayList.class;
+        System.out.println(type.getName());
+        System.out.println(type.getClassLoader());
+    }
+}
+```
+
+For classes loaded by the bootstrap loader, `Class.getClassLoader()` returns `null`.

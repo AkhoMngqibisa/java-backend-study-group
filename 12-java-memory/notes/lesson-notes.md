@@ -78,3 +78,50 @@ public class ClassLoaderExample {
 ```
 
 For classes loaded by the bootstrap loader, `Class.getClassLoader()` returns `null`.
+
+## 4. JVM memory areas
+
+### Heap
+
+The **heap** is the runtime area from which objects and arrays are generally allocated. It is shared across threads and managed by the garbage collector.
+
+```java
+Customer customer = new Customer();
+```
+
+The `Customer` object is generally allocated on the heap. The local variable `customer` is a reference held in the current method's frame.
+
+### Java stack
+
+Each thread has its own Java stack. Each method invocation creates a stack frame containing information such as local variables, intermediate computations, and return information.
+
+```java
+public static void main(String[] args) {
+    int age = 28;
+    calculate(age);
+}
+
+static void calculate(int value) {
+    int result = value * 2;
+}
+```
+
+Each method call uses a stack frame. When the method returns, its frame is removed. Deep or infinite recursion can cause `StackOverflowError`.
+
+### Metaspace
+
+Metaspace stores class metadata and uses native memory rather than the Java heap. It replaced PermGen in Java 8. Class-loader leaks or repeatedly loading classes can cause excessive Metaspace use.
+
+### Other runtime areas
+
+- **PC Register:** Each Java thread has its own register tracking the current JVM instruction for that thread.
+- **Native Method Stack:** Supports execution of native methods.
+
+| Area | Stores | Shared? |
+|---|---|---|
+| Heap | Objects and arrays | Shared |
+| Java stack | Per-thread method frames | No; each thread has its own |
+| Metaspace | Class metadata | Shared JVM area |
+| PC register | Current instruction state | Per thread |
+
+**Important:** Do not assume every local variable is always physically stored on the stack or every object always remains on the heap. JIT optimisations can change physical allocation while preserving observable Java behaviour.

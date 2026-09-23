@@ -125,3 +125,22 @@ Metaspace stores class metadata and uses native memory rather than the Java heap
 | PC register | Current instruction state | Per thread |
 
 **Important:** Do not assume every local variable is always physically stored on the stack or every object always remains on the heap. JIT optimisations can change physical allocation while preserving observable Java behaviour.
+
+
+## 5. Garbage collection (GC)
+
+Garbage collection automatically reclaims heap memory occupied by objects that are no longer reachable.
+
+```java
+public class GarbageCollectionExample {
+    public static void main(String[] args) {
+        Customer customer = new Customer();
+        customer = null; // original object may now be eligible for GC
+    }
+}
+class Customer { }
+```
+
+Setting a reference to `null` does not force collection. The object is eligible if no other reachable references keep it alive.
+
+`System.gc()` is only a request or suggestion to the JVM; it does not guarantee immediate collection.

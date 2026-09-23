@@ -207,3 +207,23 @@ java -Xms512m -Xmx2g -XX:+UseG1GC -Xlog:gc* -jar app.jar
 This sets a 512 MB initial heap, a 2 GB maximum heap, selects G1, and enables detailed GC logs.
 
 These are examples, not universal recommendations. Choose settings based on workload and container limits. The JVM also needs native memory for thread stacks, Metaspace, code cache, and other structures; `-Xmx` is not total process memory.
+
+## 9. Profiling
+
+**Profiling** measures application runtime behaviour to locate performance problems.
+
+Investigate:
+- High CPU usage.
+- Slow methods.
+- Excessive object allocation.
+- Long GC pauses.
+- Lock contention.
+- Thread bottlenecks.
+
+Common tools:
+- **Java Flight Recorder (JFR):** Low-overhead event recording built into modern JDKs.
+- **Java Mission Control (JMC):** Analyses JFR recordings.
+- **VisualVM:** Inspects CPU, memory, threads, and heap.
+- **JDK profilers:** Help analyse runtime behaviour.
+
+Measure first, identify the bottleneck, change one thing, and measure again.

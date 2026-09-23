@@ -185,3 +185,25 @@ Algorithm concepts:
 - **Copying:** Copy live objects from one region to another.
 
 Choose a collector based on measured throughput, latency, heap use, and pause times—not its name alone.
+
+## 8. JVM tuning
+
+JVM tuning means configuring runtime settings to meet an application's performance and resource requirements.
+
+| Option | Meaning |
+|---|---|
+| `-Xms` | Initial/minimum heap size |
+| `-Xmx` | Maximum heap size |
+| `-Xss` | Thread stack size |
+| `-XX:+UseG1GC` | Select G1 GC |
+| `-Xlog:gc*` | Enable detailed GC logging on modern JVMs |
+
+Example:
+
+```bash
+java -Xms512m -Xmx2g -XX:+UseG1GC -Xlog:gc* -jar app.jar
+```
+
+This sets a 512 MB initial heap, a 2 GB maximum heap, selects G1, and enables detailed GC logs.
+
+These are examples, not universal recommendations. Choose settings based on workload and container limits. The JVM also needs native memory for thread stacks, Metaspace, code cache, and other structures; `-Xmx` is not total process memory.

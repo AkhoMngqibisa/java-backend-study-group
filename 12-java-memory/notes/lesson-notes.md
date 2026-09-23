@@ -167,3 +167,21 @@ Simplified conceptual model:
 - Collections involving old-generation space are often called major or old-generation collections; terminology and behavior vary by collector.
 
 This is a conceptual model. Exact heap organization depends on the collector.
+
+## 7. GC algorithms and collectors
+
+| Collector / approach | General characteristics |
+|---|---|
+| Serial GC | Uses one GC thread; useful for smaller heaps or simple workloads |
+| Parallel GC | Uses multiple threads to increase throughput |
+| G1 GC | Divides heap into regions and aims for predictable pause targets |
+| ZGC | Low-latency collector designed for very short pauses |
+| Shenandoah | Low-pause collector that performs much work concurrently |
+
+Algorithm concepts:
+- **Mark:** Identify reachable objects.
+- **Sweep:** Reclaim memory occupied by unreachable objects.
+- **Compact:** Move live objects together to reduce fragmentation.
+- **Copying:** Copy live objects from one region to another.
+
+Choose a collector based on measured throughput, latency, heap use, and pause times—not its name alone.

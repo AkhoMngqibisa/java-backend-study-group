@@ -144,3 +144,26 @@ class Customer { }
 Setting a reference to `null` does not force collection. The object is eligible if no other reachable references keep it alive.
 
 `System.gc()` is only a request or suggestion to the JVM; it does not guarantee immediate collection.
+
+## 6. Generational garbage collection
+
+Many collectors use the observation that many objects become unreachable soon after creation.
+
+Simplified conceptual model:
+
+```text
+                 Heap
+        ┌────────────────────┐
+        │    Young Gen       │
+        │  Eden + Survivors  │
+        ├────────────────────┤
+        │     Old Gen        │
+        └────────────────────┘
+```
+
+- New objects are commonly allocated in the young generation.
+- Objects that survive collections may be promoted to the old generation.
+- A young-generation collection is often called a minor collection.
+- Collections involving old-generation space are often called major or old-generation collections; terminology and behavior vary by collector.
+
+This is a conceptual model. Exact heap organization depends on the collector.

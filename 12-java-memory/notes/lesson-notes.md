@@ -300,3 +300,14 @@ jcmd <pid> GC.heap_dump /path/to/heapdump.hprof
 Heap dumps can be large and may contain sensitive application data. Store and share them securely, and ensure enough disk space is available.
 
 VisualVM and Eclipse MAT (Memory Analyzer Tool) can help analyse heap dumps.
+
+### Thread dump vs heap dump
+
+| Thread dump | Heap dump |
+|---|---|
+| Snapshot of threads | Snapshot of heap objects |
+| Shows states and stack traces | Shows objects and references |
+| Useful for deadlocks and hangs | Useful for memory leaks |
+| Usually smaller | Can be very large |
+
+---

@@ -282,3 +282,21 @@ jstack <pid>
 ```
 
 A dump can show `RUNNABLE`, `BLOCKED`, and `WAITING` states, stack traces, and lock information. For a high-CPU issue, take multiple dumps a short time apart and compare stacks. One dump is only a snapshot.
+
+## 12. Heap dumps
+
+A **heap dump** is a snapshot of objects in the Java heap and their references.
+
+Useful for diagnosing:
+- Memory leaks.
+- Unexpectedly large collections.
+- Objects retaining other objects.
+- `OutOfMemoryError` problems.
+
+```bash
+jcmd <pid> GC.heap_dump /path/to/heapdump.hprof
+```
+
+Heap dumps can be large and may contain sensitive application data. Store and share them securely, and ensure enough disk space is available.
+
+VisualVM and Eclipse MAT (Memory Analyzer Tool) can help analyse heap dumps.

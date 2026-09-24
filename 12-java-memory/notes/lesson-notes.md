@@ -227,3 +227,33 @@ Common tools:
 - **JDK profilers:** Help analyse runtime behaviour.
 
 Measure first, identify the bottleneck, change one thing, and measure again.
+
+## 10. Memory leaks
+
+A Java memory leak occurs when an application unintentionally keeps references to objects it no longer needs. Because they remain reachable, the garbage collector cannot reclaim them.
+
+Common causes:
+- Static collections that grow without bounds.
+- Caches without eviction policies.
+- Event listeners that are never removed.
+- Long-lived objects retaining large object graphs.
+- Incorrect `ThreadLocal` lifecycle management.
+
+Example:
+
+```java
+import java.util.ArrayList;
+import java.util.List;
+
+public class MemoryLeakExample {
+    private static final List<byte[]> CACHE = new ArrayList<>();
+
+    public static void addData() {
+        CACHE.add(new byte[1024 * 1024]); // about 1 MB per call
+    }
+}
+```
+
+The static list retains every array added. If it grows continuously, heap use can grow until the application struggles or throws `OutOfMemoryError`.
+
+Investigate by checking whether heap use keeps growing after GC, capturing a heap dump, and examining dominator trees and paths to GC roots.

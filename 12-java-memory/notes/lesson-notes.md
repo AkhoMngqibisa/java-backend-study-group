@@ -257,3 +257,28 @@ public class MemoryLeakExample {
 The static list retains every array added. If it grows continuously, heap use can grow until the application struggles or throws `OutOfMemoryError`.
 
 Investigate by checking whether heap use keeps growing after GC, capturing a heap dump, and examining dominator trees and paths to GC roots.
+
+## 11. Thread dumps
+
+A **thread dump** is a snapshot of thread states and stack traces at a particular moment.
+
+Useful for diagnosing:
+- Deadlocks.
+- Threads blocked on locks.
+- Threads waiting for work.
+- High-CPU threads.
+- Application hangs.
+
+Commands:
+
+```bash
+jcmd <pid> Thread.print
+```
+
+Alternative:
+
+```bash
+jstack <pid>
+```
+
+A dump can show `RUNNABLE`, `BLOCKED`, and `WAITING` states, stack traces, and lock information. For a high-CPU issue, take multiple dumps a short time apart and compare stacks. One dump is only a snapshot.

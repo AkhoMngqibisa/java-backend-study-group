@@ -311,3 +311,19 @@ VisualVM and Eclipse MAT (Memory Analyzer Tool) can help analyse heap dumps.
 | Usually smaller | Can be very large |
 
 ---
+
+## JVM
+
+| Concept | Remember |
+|---|---|
+| JVM | Loads and executes Java bytecode |
+| Class loader | Loads class definitions |
+| Heap | Stores objects and arrays |
+| Stack | Holds per-thread method frames |
+| Metaspace | Stores class metadata |
+| Garbage collection | Reclaims unreachable objects |
+| JIT | Compiles frequently executed bytecode to native code |
+| Profiling | Measures runtime behaviour |
+| Memory leak | Unneeded objects remain reachable |
+| Thread dump | Snapshot of threads and stack traces |
+| Heap dump | Snapshot of heap objects and references |

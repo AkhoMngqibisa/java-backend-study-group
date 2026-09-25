@@ -65,3 +65,48 @@ Choose a suitable tool or command:
 4. Analyse a heap dump for retained objects and paths to GC roots.
 
 ---
+
+
+## JVM answers
+
+### Exercise 7
+
+1. Object — Heap.
+2. Local primitive variable — normally represented in the method's Java stack frame (subject to JIT optimisation).
+3. Class metadata — Metaspace.
+4. Current instruction — PC Register.
+5. Method invocation frame — Java Stack.
+
+### Exercise 8
+
+1. No. `second` still refers to the object.
+2. If no other reachable references exist, the object becomes eligible for collection.
+3. No. `System.gc()` does not guarantee immediate collection.
+
+### Exercise 9
+
+The static list remains reachable and retains its elements. In a heap dump, inspect the list's retained size, entries, and paths to GC roots. Fixes include bounded caches with eviction, removing completed request objects, and avoiding unnecessary static references.
+
+### Exercise 10
+
+1. Thread dump.
+2. Heap dump (GC logs are also useful).
+3. Heap dump.
+4. Thread dump.
+
+### Exercise 11
+
+- `-Xms512m`: initial/minimum Java heap size.
+- `-Xmx2g`: maximum Java heap size.
+- `-Xss1m`: thread stack size.
+- `-XX:+UseG1GC`: selects G1 GC.
+- `-Xlog:gc*`: enables detailed GC logging on modern JVMs.
+
+### Exercise 12
+
+1. `jcmd <pid> Thread.print` or `jstack <pid>`.
+2. `jcmd <pid> GC.heap_dump /path/to/dump.hprof`.
+3. Java Flight Recorder (JFR).
+4. Eclipse MAT (Memory Analyzer Tool), or another heap-dump analyser.
+
+---

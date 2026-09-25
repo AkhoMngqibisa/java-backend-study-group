@@ -71,3 +71,143 @@ Questions:
 1. Why can this cause deadlock?
 2. What is one way to prevent it?
 3. Which diagnostic tool can help confirm a deadlock in a running JVM?
+
+## Concurrency answers
+
+### Exercise 1
+
+```java
+public class TwoThreadsExample {
+    public static void main(String[] args) {
+        Thread numbers = new Thread(() -> {
+            for (int i = 1; i <= 5; i++) System.out.println(i);
+        });
+
+        Thread letters = new Thread(() -> {
+            for (char c = 'A'; c <= 'E'; c++) System.out.println(c);
+        });
+
+        numbers.start();
+        letters.start();
+    }
+}
+```
+
+Order is not guaranteed because the scheduler decides when each thread runs. `start()` starts a new thread; `run()` called directly does not.
+
+### Exercise 2
+
+```java
+import java.util.concurrent.*;
+
+public class RunnableCallableAnswer {
+    public static void main(String[] args) {
+        Runnable runnable = () -> System.out.println("Processing order");
+        Callable<Integer> callable = () -> 100 + 200;
+
+        ExecutorService executor = Executors.newSingleThreadExecutor();
+        try {
+            executor.submit(runnable);
+            Future<Integer> future = executor.submit(callable);
+            System.out.println(future.get()); // 300
+        } catch (InterruptedException exception) {
+            Thread.currentThread().interrupt();
+        } catch (ExecutionException exception) {
+            System.out.println("Task failed: " + exception.getCause());
+        } finally {
+            executor.shutdown();
+        }
+    }
+}
+```
+
+### Exercise 3 — `synchronized`
+
+```java
+class SynchronizedCounter {
+    private int count;
+
+    public synchronized void increment() {
+        count++;
+    }
+
+    public synchronized int getCount() {
+        return count;
+    }
+}
+```
+
+Call `getCount()` after both worker threads complete using `join()`.
+
+### Exercise 3 — `AtomicInteger`
+
+```java
+import java.util.concurrent.atomic.AtomicInteger;
+
+class AtomicCounter {
+    private final AtomicInteger count = new AtomicInteger();
+
+    public void increment() {
+        count.incrementAndGet();
+    }
+
+    public int getCount() {
+        return count.get();
+    }
+}
+```
+
+### Exercise 4
+
+```java
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.LinkedBlockingQueue;
+
+public class ProducerConsumerAnswer {
+    public static void main(String[] args) throws InterruptedException {
+        BlockingQueue<String> queue = new LinkedBlockingQueue<>();
+
+        Thread producer = new Thread(() -> {
+            try {
+                queue.put("Email");
+                queue.put("Report");
+                queue.put("Invoice");
+            } catch (InterruptedException exception) {
+                Thread.currentThread().interrupt();
+            }
+        });
+
+        Thread consumer = new Thread(() -> {
+            try {
+                for (int i = 0; i < 3; i++) {
+                    System.out.println("Processing: " + queue.take());
+                }
+            } catch (InterruptedException exception) {
+                Thread.currentThread().interrupt();
+            }
+        });
+
+        producer.start();
+        consumer.start();
+        producer.join();
+        consumer.join();
+    }
+}
+```
+
+`take()` waits until an item becomes available if the queue is empty.
+
+### Exercise 5
+
+```java
+CompletableFuture<Integer> result =
+        CompletableFuture.supplyAsync(() -> 10)
+                .thenApply(number -> number * 5)
+                .thenApply(number -> number + 20);
+
+System.out.println(result.join()); // 70
+```
+
+### Exercise 6
+
+Each thread can hold one lock while waiting for the other, creating circular wait. Acquire locks in a consistent order to prevent this. A thread dump can help identify the deadlock.

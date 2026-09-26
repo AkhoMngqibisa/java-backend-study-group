@@ -44,7 +44,44 @@ public class ThreadExample {
 - Calling `run()` directly is an ordinary method call on the current thread. It does not start a new thread.
 - Thread scheduling is not deterministic. Do not assume a fixed output order without coordination.
 
+## 4. Thread lifecycle
 
+Java's `Thread.State` defines these states:
+
+| State | Meaning |
+|---|---|
+| `NEW` | Created, but `start()` has not been called |
+| `RUNNABLE` | Eligible to run or currently running |
+| `BLOCKED` | Waiting to acquire an intrinsic monitor lock |
+| `WAITING` | Waiting indefinitely for another action |
+| `TIMED_WAITING` | Waiting for a limited time |
+| `TERMINATED` | Execution has completed |
+
+```text
+             new Thread()
+                  |
+                  v
+                 NEW
+                  |
+                start()
+                  |
+                  v
+              RUNNABLE
+             /    |     \
+       lock wait  wait()  sleep()/timed wait
+           |        |          |
+           v        v          v
+        BLOCKED  WAITING  TIMED_WAITING
+             \      |        /
+              \ eligible   /
+                  |
+             run() ends
+                  |
+                  v
+              TERMINATED
+```
+
+A thread in `RUNNABLE` may be executing or waiting for CPU time. Java does not expose a separate `RUNNING` state.
 
 
 

@@ -22,6 +22,27 @@ A **process** is an executing program with its own address space and operating-s
 | Isolation | Stronger failure isolation | A thread failure can affect its process |
 | Java example | Separate JVM process | `Thread` inside a JVM |
 
+## 3. Creating a thread with `Thread`
+
+```java
+public class ThreadExample {
+    public static void main(String[] args) {
+        Thread worker = new Thread(() ->
+                System.out.println("Running on: " +
+                        Thread.currentThread().getName())
+        );
+
+        worker.start();
+
+        System.out.println("Running on: " +
+                Thread.currentThread().getName());
+    }
+}
+```
+
+- `start()` asks the JVM to start a new thread; that thread later invokes `run()`.
+- Calling `run()` directly is an ordinary method call on the current thread. It does not start a new thread.
+- Thread scheduling is not deterministic. Do not assume a fixed output order without coordination.
 
 
 

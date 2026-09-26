@@ -10,6 +10,25 @@
 
 **Analogy:** A restaurant has several orders in progress. Chefs and waiters are like threads. Shared ingredients are shared resources. If two chefs update the same stock count without coordination, the result may be wrong.
 
+## 2. Processes vs threads
+
+A **process** is an executing program with its own address space and operating-system resources. A **thread** is an execution path within a process. Threads in one process share heap memory and other process resources, but each thread has its own stack and execution state.
+
+| Feature | Process | Thread |
+|---|---|---|
+| Memory | Separate address space | Shares process memory |
+| Communication | Often needs inter-process communication | Can use shared objects |
+| Overhead | Generally heavier | Generally lighter |
+| Isolation | Stronger failure isolation | A thread failure can affect its process |
+| Java example | Separate JVM process | `Thread` inside a JVM |
+
+
+
+
+
+
+
+
 ## Concurrency
 
 | Concept | Remember |

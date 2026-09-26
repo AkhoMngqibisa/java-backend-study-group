@@ -83,7 +83,33 @@ Java's `Thread.State` defines these states:
 
 A thread in `RUNNABLE` may be executing or waiting for CPU time. Java does not expose a separate `RUNNING` state.
 
+## 5. `Runnable` vs `Callable`
 
+| Feature | `Runnable` | `Callable<V>` |
+|---|---|---|
+| Main method | `run()` | `call()` |
+| Returns a result | No | Yes, type `V` |
+| Can declare checked exceptions | No | Yes |
+| Typical use | Task with no result | Task that returns a result |
+
+```java
+Runnable task = () -> System.out.println("Processing order");
+new Thread(task).start();
+```
+
+```java
+import java.util.concurrent.Callable;
+
+Callable<Integer> calculation = () -> 10 + 20;
+try {
+    Integer result = calculation.call();
+    System.out.println(result); // 30
+} catch (Exception exception) {
+    exception.printStackTrace();
+}
+```
+
+In applications, a `Callable` is usually submitted to an executor rather than calling `call()` directly.
 
 
 

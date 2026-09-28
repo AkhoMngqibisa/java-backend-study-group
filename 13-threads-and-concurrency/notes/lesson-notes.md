@@ -241,7 +241,43 @@ System.out.println(result.join()); // 0
 
 Many async methods use the common ForkJoin pool by default. For blocking I/O or application-specific workloads, consider supplying an appropriately configured executor.
 
+## 9. Race conditions
 
+A **race condition** occurs when correctness depends on the unpredictable timing or interleaving of concurrent operations.
+
+`count++` is not one indivisible operation. It involves reading, adding, and writing. Two threads can read the same old value and overwrite one another's updates.
+
+```java
+public class RaceConditionExample {
+    static class Counter {
+        int count = 0;
+        void increment() {
+            count++;
+        }
+    }
+
+    public static void main(String[] args) throws InterruptedException {
+        Counter counter = new Counter();
+
+        Thread first = new Thread(() -> {
+            for (int i = 0; i < 100_000; i++) counter.increment();
+        });
+        Thread second = new Thread(() -> {
+            for (int i = 0; i < 100_000; i++) counter.increment();
+        });
+
+        first.start();
+        second.start();
+        first.join();
+        second.join();
+
+        System.out.println("Expected: 200000");
+        System.out.println("Actual: " + counter.count);
+    }
+}
+```
+
+The actual result may be less than 200,000. It is nondeterministic.
 
 
 

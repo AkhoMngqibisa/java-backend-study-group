@@ -279,7 +279,33 @@ public class RaceConditionExample {
 
 The actual result may be less than 200,000. It is nondeterministic.
 
+## 10. Synchronization and `synchronized`
 
+Synchronization coordinates access to shared mutable state. A `synchronized` method or block uses an object's intrinsic monitor. Only one thread at a time can hold that same monitor.
+
+```java
+class SafeCounter {
+    private int count;
+
+    public synchronized void increment() {
+        count++;
+    }
+
+    public synchronized int getCount() {
+        return count;
+    }
+}
+```
+
+A synchronized block can protect a smaller critical section:
+
+```java
+synchronized (lockObject) {
+    // access shared state safely
+}
+```
+
+All threads must use the **same lock object** to coordinate access to the same state. Synchronization also provides memory-visibility guarantees between threads that release and subsequently acquire the same monitor.
 
 
 

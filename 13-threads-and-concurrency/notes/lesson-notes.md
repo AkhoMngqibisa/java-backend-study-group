@@ -111,6 +111,43 @@ try {
 
 In applications, a `Callable` is usually submitted to an executor rather than calling `call()` directly.
 
+## 6. `ExecutorService` and thread pools
+
+An **executor** separates task submission from thread-management details. A **thread pool** reuses a managed group of worker threads instead of creating a new thread for every task.
+
+```java
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
+public class ExecutorExample {
+    public static void main(String[] args) {
+        ExecutorService executor = Executors.newFixedThreadPool(2);
+
+        try {
+            for (int i = 1; i <= 5; i++) {
+                int taskNumber = i;
+                executor.submit(() ->
+                        System.out.println("Task " + taskNumber +
+                                " on " + Thread.currentThread().getName())
+                );
+            }
+        } finally {
+            executor.shutdown();
+        }
+    }
+}
+```
+
+- `newFixedThreadPool(2)` creates a pool with two worker threads.
+- `submit()` schedules a task.
+- `shutdown()` rejects new tasks but allows submitted tasks to finish.
+- `shutdownNow()` attempts to interrupt active tasks and returns tasks that never started; it cannot guarantee every task stops.
+
+**Best practice:** Ensure executors are shut down. The `try/finally` pattern is portable in Java 17.
+
+
+
+
 
 
 ## Concurrency

@@ -145,7 +145,44 @@ public class ExecutorExample {
 
 **Best practice:** Ensure executors are shut down. The `try/finally` pattern is portable in Java 17.
 
+## 7. `Future`
 
+A `Future<V>` represents the result of an asynchronous computation that may not have completed.
+
+```java
+import java.util.concurrent.*;
+
+public class FutureExample {
+    public static void main(String[] args) {
+        ExecutorService executor = Executors.newSingleThreadExecutor();
+
+        try {
+            Future<Integer> future = executor.submit(() -> {
+                Thread.sleep(500);
+                return 42;
+            });
+
+            System.out.println("Task submitted...");
+            Integer result = future.get(); // waits for completion
+            System.out.println("Result: " + result);
+        } catch (InterruptedException exception) {
+            Thread.currentThread().interrupt();
+        } catch (ExecutionException exception) {
+            System.out.println("Task failed: " + exception.getCause());
+        } finally {
+            executor.shutdown();
+        }
+    }
+}
+```
+
+Useful methods:
+- `get()` waits and returns the result.
+- `isDone()` checks completion.
+- `cancel(true)` attempts cancellation and may interrupt the task.
+- `get()` can throw `InterruptedException` or `ExecutionException`.
+
+**Limitation:** Calling `get()` too early blocks the calling thread. `Future` does not provide a rich chain of dependent operations.
 
 
 

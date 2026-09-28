@@ -184,6 +184,67 @@ Useful methods:
 
 **Limitation:** Calling `get()` too early blocks the calling thread. `Future` does not provide a rich chain of dependent operations.
 
+## 8. `CompletableFuture`
+
+`CompletableFuture` supports asynchronous pipelines and combining results.
+
+```java
+import java.util.concurrent.CompletableFuture;
+
+public class CompletableFutureExample {
+    public static void main(String[] args) {
+        CompletableFuture<Integer> future =
+                CompletableFuture.supplyAsync(() -> 20)
+                        .thenApply(number -> number * 2)
+                        .thenApply(number -> number + 5);
+
+        System.out.println(future.join()); // 45
+    }
+}
+```
+
+| Method | Purpose |
+|---|---|
+| `supplyAsync()` | Runs a task that returns a value |
+| `runAsync()` | Runs a task with no result |
+| `thenApply()` | Transforms a successful result |
+| `thenAccept()` | Consumes a successful result |
+| `thenCompose()` | Chains another asynchronous operation |
+| `thenCombine()` | Combines two independent results |
+| `exceptionally()` | Recovers from an error with a fallback |
+| `handle()` | Handles either a result or an error |
+
+Combining tasks:
+
+```java
+CompletableFuture<Integer> price =
+        CompletableFuture.supplyAsync(() -> 100);
+CompletableFuture<Integer> delivery =
+        CompletableFuture.supplyAsync(() -> 25);
+
+CompletableFuture<Integer> total =
+        price.thenCombine(delivery, Integer::sum);
+
+System.out.println(total.join()); // 125
+```
+
+Handling a failure:
+
+```java
+CompletableFuture<Integer> result =
+        CompletableFuture.supplyAsync(() -> {
+            throw new IllegalStateException("Service unavailable");
+        }).exceptionally(exception -> 0);
+
+System.out.println(result.join()); // 0
+```
+
+Many async methods use the common ForkJoin pool by default. For blocking I/O or application-specific workloads, consider supplying an appropriately configured executor.
+
+
+
+
+
 
 
 

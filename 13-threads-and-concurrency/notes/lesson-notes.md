@@ -416,9 +416,57 @@ Common classes: `AtomicInteger`, `AtomicLong`, `AtomicBoolean`, and `AtomicRefer
 
 Atomic operations are useful for simple updates. They do not automatically make a sequence of several separate operations atomic.
 
+## 14. Concurrent collections
 
+Ordinary collections such as `ArrayList` and `HashMap` are not designed for unsynchronized concurrent modification by multiple threads.
 
+| Collection | Use |
+|---|---|
+| `ConcurrentHashMap` | Concurrent key-value access |
+| `CopyOnWriteArrayList` | Many reads, relatively few writes |
+| `BlockingQueue` | Producer-consumer coordination |
+| `ConcurrentLinkedQueue` | Non-blocking concurrent queue |
+| `ConcurrentSkipListMap` | Concurrent sorted map |
 
+Example:
+
+```java
+import java.util.concurrent.ConcurrentHashMap;
+
+public class ConcurrentMapExample {
+    public static void main(String[] args) {
+        ConcurrentHashMap<String, Integer> stock = new ConcurrentHashMap<>();
+        stock.put("Laptop", 10);
+        stock.put("Mouse", 25);
+
+        stock.merge("Laptop", -1, Integer::sum);
+        System.out.println(stock.get("Laptop")); // 9
+    }
+}
+```
+
+`merge()` performs the update atomically for that key.
+
+Producer-consumer queue:
+
+```java
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.LinkedBlockingQueue;
+
+public class BlockingQueueExample {
+    public static void main(String[] args) throws InterruptedException {
+        BlockingQueue<String> jobs = new LinkedBlockingQueue<>();
+        jobs.put("Send email");
+        jobs.put("Generate report");
+
+        System.out.println(jobs.take()); // Send email
+    }
+}
+```
+
+`put()` waits if a bounded queue is full. `take()` waits if the queue is empty.
+
+---
 
 ## Concurrency
 

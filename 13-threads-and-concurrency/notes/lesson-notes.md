@@ -307,6 +307,52 @@ synchronized (lockObject) {
 
 All threads must use the **same lock object** to coordinate access to the same state. Synchronization also provides memory-visibility guarantees between threads that release and subsequently acquire the same monitor.
 
+## 11. Locks
+
+The `java.util.concurrent.locks` package provides explicit locking tools.
+
+```java
+import java.util.concurrent.locks.ReentrantLock;
+
+class LockedCounter {
+    private int count;
+    private final ReentrantLock lock = new ReentrantLock();
+
+    public void increment() {
+        lock.lock();
+        try {
+            count++;
+        } finally {
+            lock.unlock();
+        }
+    }
+
+    public int getCount() {
+        lock.lock();
+        try {
+            return count;
+        } finally {
+            lock.unlock();
+        }
+    }
+}
+```
+
+Unlock in `finally` so an exception does not accidentally leave the lock held.
+
+| `synchronized` | `ReentrantLock` |
+|---|---|
+| Language keyword | Explicit lock API |
+| Released automatically when block exits | Must call `unlock()` |
+| Simple and concise | More advanced operations |
+| No timed `tryLock()` | Supports `tryLock()` and timed acquisition |
+
+Use the simplest mechanism that meets the requirement.
+
+
+
+
+
 
 
 

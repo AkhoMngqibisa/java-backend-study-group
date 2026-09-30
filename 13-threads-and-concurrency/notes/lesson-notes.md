@@ -384,7 +384,37 @@ Reduce risk by:
 - Considering timed lock acquisition with `tryLock()`.
 - Using thread dumps to diagnose deadlocks.
 
+## 13. Atomic variables
 
+Atomic classes provide thread-safe operations on individual variables without requiring an explicit synchronized block for each operation.
+
+```java
+import java.util.concurrent.atomic.AtomicInteger;
+
+public class AtomicCounterExample {
+    public static void main(String[] args) throws InterruptedException {
+        AtomicInteger counter = new AtomicInteger(0);
+
+        Thread first = new Thread(() -> {
+            for (int i = 0; i < 100_000; i++) counter.incrementAndGet();
+        });
+        Thread second = new Thread(() -> {
+            for (int i = 0; i < 100_000; i++) counter.incrementAndGet();
+        });
+
+        first.start();
+        second.start();
+        first.join();
+        second.join();
+
+        System.out.println(counter.get()); // 200000
+    }
+}
+```
+
+Common classes: `AtomicInteger`, `AtomicLong`, `AtomicBoolean`, and `AtomicReference<T>`.
+
+Atomic operations are useful for simple updates. They do not automatically make a sequence of several separate operations atomic.
 
 
 

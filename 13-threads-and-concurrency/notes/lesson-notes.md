@@ -349,6 +349,40 @@ Unlock in `finally` so an exception does not accidentally leave the lock held.
 
 Use the simplest mechanism that meets the requirement.
 
+## 12. Deadlocks
+
+A **deadlock** occurs when threads wait indefinitely for locks held by one another.
+
+```text
+Thread A holds Lock 1 and waits for Lock 2.
+Thread B holds Lock 2 and waits for Lock 1.
+
+Thread A ── waits for ──> Lock 2
+   ^                         |
+   |                         v
+ Lock 1 <── held by ─── Thread B
+```
+
+Risky lock ordering:
+
+```java
+// Thread A
+synchronized (lock1) {
+    synchronized (lock2) { /* work */ }
+}
+
+// Thread B
+synchronized (lock2) {
+    synchronized (lock1) { /* work */ }
+}
+```
+
+Reduce risk by:
+- Acquiring multiple locks in a consistent global order.
+- Keeping critical sections small.
+- Avoiding unknown/external calls while holding locks.
+- Considering timed lock acquisition with `tryLock()`.
+- Using thread dumps to diagnose deadlocks.
 
 
 

@@ -1135,3 +1135,83 @@ Need a Set?
     |
     └── Need insertion order → LinkedHashSet
 ```
+
+## Anelisa Collections Chosen
+
+|   | Collection    | Presenter |
+| - | ------------- | --------- |
+|   | Treeset       | Anelisa   |
+|   | Treemap       | Anelisa   |
+|   | PriorityQueue | Anelisa   |
+
+---
+# 1. Treeset
+
+## What is an Treeset?
+A Treeset is a collection that stores unique elements in sorted order. A Treeset keeps its elements sorted automatically.
+
+Example : Create a TreeSet object called cars that will store strings:
+
+import java.util.TreeSet; // Import the TreeSet class
+
+TreeSet<String> cars = new TreeSet<>();
+Now you can use methods like add(), contains(), and remove() to manage your sorted set of elements.
+
+Add Elements
+To add elements to a TreeSet, use the add() method:
+
+## Example
+import java.util.TreeSet; //important 
+
+    TreeSet<String> cars = new TreeSet<>();
+    cars.add("Volvo");
+    cars.add("BMW");
+    cars.add("Ford");
+    cars.add("BMW");  // Duplicate
+    cars.add("Mazda");
+
+    System.out.println(cars);
+
+Output: The elements will be sorted automatically (e.g., [BMW, Ford, Mazda, Volvo]).
+
+Note: Duplicates like "BMW" will only appear once.
+
+## Key Features
+
+• Sorting: Elements are sorted in ascending natural order or by a custom Comparator provided at creation.
+• Uniqueness: Duplicate values are automatically ignored.
+• Null values: Does not allow null elements; adding one throws a NullPointerException.
+• Performance: Guaranteed O(log n) time complexity for basic operations like add, remove, and contains.
+• Thread safety: Not synchronized by default. External synchronization is required for multi-threaded access.
+
+## Technical Explanation
+
+A TreeSet is a collection class that stores unique elements in a sorted order. It is part of java.util package that implements the SortedSet interface, and internally uses a Red-Black tree to maintain sorting.
+
+## Treeset methods 
+
+| Method            | Explanation                                                               | Example                   | Result                     |
+| ----------------- | ------------------------------------------------------------------------- | ------------------------- | -------------------------- |
+| `add()`           | Adds an element to the set                                                | `numbers.add(60)`         | `[10, 20, 30, 40, 50, 60]` |
+| `remove()`        | Removes a specific element                                                | `numbers.remove(30)`      | `[10, 20, 40, 50]`         |
+| `contains()`      | Checks if an element exists                                               | `numbers.contains(20)`    | `true`                     |
+| `size()`          | Returns the number of elements                                            | `numbers.size()`          | `5`                        |
+| `isEmpty()`       | Checks whether the set is empty                                           | `numbers.isEmpty()`       | `false`                    |
+| `clear()`         | Removes all elements                                                      | `numbers.clear()`         | `[]`                       |
+| `first()`         | Returns the smallest element                                              | `numbers.first()`         | `10`                       |
+| `last()`          | Returns the largest element                                               | `numbers.last()`          | `50`                       |
+| `higher()`        | Returns the smallest element **greater than** the given value             | `numbers.higher(20)`      | `30`                       |
+| `lower()`         | Returns the largest element **less than** the given value                 | `numbers.lower(30)`       | `20`                       |
+| `ceiling()`       | Returns the smallest element **greater than or equal to** the given value | `numbers.ceiling(25)`     | `30`                       |
+| `floor()`         | Returns the largest element **less than or equal to** the given value     | `numbers.floor(25)`       | `20`                       |
+| `pollFirst()`     | Retrieves **and removes** the smallest element                            | `numbers.pollFirst()`     | `10`                       |
+| `pollLast()`      | Retrieves **and removes** the largest element                             | `numbers.pollLast()`      | `50`                       |
+| `descendingSet()` | Returns the elements in reverse sorted order                              | `numbers.descendingSet()` | `[50, 40, 30, 20, 10]`     |
+
+
+## Questions :
+1. Does TreeSet maintain insertion order?
+2. Can a TreeSet contain null?
+3. How does TreeSet know how to sort objects?
+4. Does TreeSet allow duplicate values?
+5. Can you retrieve the first and last elements from a TreeSet?
